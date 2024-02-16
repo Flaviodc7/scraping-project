@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { ProductScrapingEntity } from '../core/modules/scrapingProducts/domain/productScraping.entity';
-import { ProductScrapingMongoRepository } from 'src/repository/products.mongo.repository';
-import { removeHTMLTags } from 'src/utils/accentMarkDictionary';
-import { delay } from 'src/utils/delay';
-import { getSitemapData } from 'src/utils/getSitemapData';
-import { splitArray } from 'src/utils/splitArray';
+import { ProductScrapingEntity } from '../../core/modules/scrapingProducts/domain/productScraping.entity';
+import { ProductScrapingMongoRepository } from 'src/infra/repository/products.mongo.repository';
+import { removeHTMLTags } from 'src/infra/utils/accentMarkDictionary';
+import { delay } from 'src/infra/utils/delay';
+import { getSitemapData } from 'src/infra/utils/getSitemapData';
+import { splitArray } from 'src/infra/utils/splitArray';
+import { currentTime } from '../utils/currentTime';
 
 const getCookies = async () => {
   try {
@@ -145,7 +146,7 @@ const processBatchOfProducts = async (batch: string[], cookie: string, retailer:
             requiresPrescription: productData.prescription ? 1 : 0,
             restrictions: '',
             retailer,
-            sku: `${productData.id}-${retailer}`,
+            sku: `${String(productData.id)}-${retailer}`,
             temporaryCategories: [],
           };
           products.push(product);

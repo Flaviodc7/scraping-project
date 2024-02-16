@@ -1,6 +1,6 @@
 import { ProductScrapingEntity } from 'src/core/modules/scrapingProducts/domain/productScraping.entity';
 import { ProductScrapingRepository } from 'src/core/modules/scrapingProducts/domain/productScraping.repository';
-import ProductScrapingModel from 'src/models/products.model';
+import ProductScrapingModel from 'src/infra/models/products.model';
 
 export class ProductScrapingMongoRepository implements ProductScrapingRepository {
   insertProducts = async (productos: ProductScrapingEntity[]): Promise<ProductScrapingEntity[]> => {
@@ -11,7 +11,7 @@ export class ProductScrapingMongoRepository implements ProductScrapingRepository
           new: true,
           upsert: true,
         });
-        console.log(`Product insert/update succesfull: ${result}`);
+        console.log(`Product insert/update successful: ${JSON.stringify(result)}`);
         if (result !== null) {
           updatedProducts.push(result.toObject() as ProductScrapingEntity);
         }

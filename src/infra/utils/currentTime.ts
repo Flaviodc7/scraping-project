@@ -1,4 +1,4 @@
-const currentTime = () => {
+export const currentTime = () => {
   const fechaActual = new Date();
 
   const hours = fechaActual.getHours();
