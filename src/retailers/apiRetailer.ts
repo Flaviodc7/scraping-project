@@ -104,7 +104,7 @@ const getBreadcrumbsData = async (category: string, cookie: string) => {
   }
 };
 
-const processBatchOfProducts = async (batch: string[], cookie: string) => {
+const processBatchOfProducts = async (batch: string[], cookie: string, retailer: string) => {
   const products: ProductScrapingEntity[] = [];
   await Promise.all(
     batch.map(
@@ -144,8 +144,8 @@ const processBatchOfProducts = async (batch: string[], cookie: string) => {
               : 'NO RECOMENDATIONS',
             requiresPrescription: productData.prescription ? 1 : 0,
             restrictions: '',
-            retailer: '',
-            sku: productData.id,
+            retailer,
+            sku: `${productData.id}-${retailer}`,
             temporaryCategories: [],
           };
           products.push(product);
@@ -157,13 +157,13 @@ const processBatchOfProducts = async (batch: string[], cookie: string) => {
   return products;
 };
 
-async function processProductUrls(allSitesFromSiteMap: string[]) {
+async function processProductUrls(allSitesFromSiteMap: string[], retailer: string) {
   const ProductRepository = new ProductScrapingMongoRepository();
   const batches = splitArray(allSitesFromSiteMap, 20);
   const cookie = await getCookies();
   if (cookie) {
     for (const batch of batches) {
-      const products = await processBatchOfProducts(batch, cookie);
+      const products = await processBatchOfProducts(batch, cookie, retailer);
       await ProductRepository.insertProducts(products);
     }
   }
@@ -188,7 +188,7 @@ export const scrapApiProductsFromRetailer = async (retailer: string) => {
     });
     const allProductSitemaps = await Promise.all(sitePromises);
     allSitesFromSiteMap.push(...allProductSitemaps.flat());
-    await processProductUrls(allSitesFromSiteMap);
+    await processProductUrls(allSitesFromSiteMap, retailer);
     console.log('TASK COMPLETED SUCCESFULLY');
   }
 

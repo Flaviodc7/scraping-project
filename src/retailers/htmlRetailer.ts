@@ -35,7 +35,7 @@ const getProductData = async (url: string) => {
   }
 };
 
-const processBatchOfProducts = async (batch: string[]) => {
+const processBatchOfProducts = async (batch: string[], retailer: string) => {
   const products: ProductScrapingEntity[] = [];
   await Promise.all(
     batch.map(async (productSiteUrl) => {
@@ -96,8 +96,8 @@ const processBatchOfProducts = async (batch: string[]) => {
             recommendations: '',
             requiresPrescription: $("svg[id='ico_doc']").length ? 1 : 0,
             restrictions: '',
-            retailer: '',
-            sku: productData.sku,
+            retailer,
+            sku: `${productData.sku}-${retailer}`,
           };
           products.push(product);
         }
@@ -107,11 +107,11 @@ const processBatchOfProducts = async (batch: string[]) => {
   return products;
 };
 
-async function processProductUrls(allSitesFromSiteMap: string[]) {
+async function processProductUrls(allSitesFromSiteMap: string[], retailer: string) {
   const ProductRepository = new ProductScrapingMongoRepository();
   const batches = splitArray(allSitesFromSiteMap, 10);
   for (const batch of batches) {
-    const products = await processBatchOfProducts(batch);
+    const products = await processBatchOfProducts(batch, retailer);
     await ProductRepository.insertProducts(products);
   }
 }
@@ -136,7 +136,7 @@ export const scrapHTMLProductsFromRetailer = async (retailer: string) => {
     });
     const allProductSitemaps = await Promise.all(sitePromises);
     allSitesFromSiteMap.push(...allProductSitemaps.flat());
-    await processProductUrls(allSitesFromSiteMap);
+    await processProductUrls(allSitesFromSiteMap, retailer);
     console.log('TASK COMPLETED SUCCESFULLY');
   }
 
