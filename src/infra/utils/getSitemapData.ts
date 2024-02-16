@@ -1,6 +1,6 @@
 import axios from 'axios';
 import xml2js from 'xml2js';
-import { SitemapEntity } from 'src/core/modules/scrapingProducts/domain/entities';
+import { SitemapEntity } from '@modules/scrapingProducts/domain/entities';
 
 export const getSitemapData = async (url: string): Promise<SitemapEntity[] | null> => {
   const config = {

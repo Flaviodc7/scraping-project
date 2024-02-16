@@ -1,4 +1,4 @@
-import { HTMLCharacterToCharacterMap } from 'src/core/modules/scrapingProducts/domain/entities';
+import { HTMLCharacterToCharacterMap } from '@modules/scrapingProducts/domain/entities';
 
 const accentMarkDictionary: HTMLCharacterToCharacterMap = {
   '&Aacute;': 'Á',

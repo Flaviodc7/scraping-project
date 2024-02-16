@@ -1,6 +1,6 @@
-import { ProductScrapingEntity } from 'src/core/modules/scrapingProducts/domain/productScraping.entity';
-import { ProductScrapingRepository } from 'src/core/modules/scrapingProducts/domain/productScraping.repository';
-import ProductScrapingModel from 'src/infra/models/products.model';
+import { ProductScrapingEntity } from '@modules/scrapingProducts/domain/productScraping.entity';
+import { ProductScrapingRepository } from '@modules/scrapingProducts/domain/productScraping.repository';
+import ProductScrapingModel from '@models/products.model';
 
 export class ProductScrapingMongoRepository implements ProductScrapingRepository {
   insertProducts = async (productos: ProductScrapingEntity[]): Promise<ProductScrapingEntity[]> => {

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
-import { ProductScrapingEntity } from '../../core/modules/scrapingProducts/domain/productScraping.entity';
-import { ProductScrapingMongoRepository } from 'src/infra/repository/products.mongo.repository';
-import { delay } from 'src/infra/utils/delay';
-import { getSitemapData } from 'src/infra/utils/getSitemapData';
-import { splitArray } from 'src/infra/utils/splitArray';
+import { ProductScrapingEntity } from '@modules/scrapingProducts/domain/productScraping.entity';
+import { ProductScrapingMongoRepository } from '@repositories/products.mongo.repository';
+import { delay } from '@utils/delay';
+import { getSitemapData } from '@utils/getSitemapData';
+import { splitArray } from '@utils/splitArray';
 import { currentTime } from '../utils/currentTime';
 
 const getProductData = async (url: string) => {

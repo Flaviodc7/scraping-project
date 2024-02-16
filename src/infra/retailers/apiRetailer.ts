@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { ProductScrapingEntity } from '../../core/modules/scrapingProducts/domain/productScraping.entity';
-import { ProductScrapingMongoRepository } from 'src/infra/repository/products.mongo.repository';
-import { removeHTMLTags } from 'src/infra/utils/accentMarkDictionary';
-import { delay } from 'src/infra/utils/delay';
-import { getSitemapData } from 'src/infra/utils/getSitemapData';
-import { splitArray } from 'src/infra/utils/splitArray';
-import { currentTime } from '../utils/currentTime';
+import { ProductScrapingEntity } from '@modules/scrapingProducts/domain/productScraping.entity';
+import { ProductScrapingMongoRepository } from '@repositories/products.mongo.repository';
+import { removeHTMLTags } from '@utils/accentMarkDictionary';
+import { delay } from '@utils/delay';
+import { getSitemapData } from '@utils/getSitemapData';
+import { splitArray } from '@utils/splitArray';
+import { currentTime } from '@utils/currentTime';
 
 const getCookies = async () => {
   try {
