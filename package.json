@@ -1,0 +1,37 @@
+{
+  "name": "scrapping-productos",
+  "version": "1.0.0",
+  "description": "Scrapping de retailers",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "start": "node ./build/app.js",
+    "eslint": "eslint . --ext ts",
+    "fix": "eslint . --ext ts --fix",
+    "prettier": "prettier --check ./src",
+    "format": "prettier --write ./src"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "1.5.1",
+    "cheerio": "1.0.0-rc.12",
+    "mongoose": "7.5.3",
+    "xml2js": "0.6.2"
+  },
+  "devDependencies": {
+    "@types/xml2js": "0.4.14",
+    "@typescript-eslint/eslint-plugin": "5.61.0",
+    "eslint": "8.44.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-config-standard-with-typescript": "36.0.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-n": "15.7.0",
+    "eslint-plugin-promise": "6.1.1",
+    "prettier": "3.0.0",
+    "serverless-dotenv-plugin": "4.0.2",
+    "serverless-offline": "11.6.0",
+    "serverless-plugin-typescript": "2.1.4",
+    "typescript": "5.1.6"
+  }
+}

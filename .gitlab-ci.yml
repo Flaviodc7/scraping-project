@@ -1,0 +1,10 @@
+include:
+  - project: 'farmaloop-latam/infra/gitlab-ci'
+    file:
+      - 'serverless-lambda-without-FC.yml'
+
+variables:
+  LAMBDA_RUNTIME: 'nodejs16.x'
+  APP_NAME: 'administrador-bsale-actualizar-stock'
+  REGIONS: 'us-east-1'
+  SECRET: ''
