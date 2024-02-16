@@ -22,6 +22,7 @@
   "devDependencies": {
     "@types/xml2js": "0.4.14",
     "@typescript-eslint/eslint-plugin": "5.61.0",
+    "axios": "1.5.1",
     "eslint": "8.44.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-config-standard-with-typescript": "36.0.0",
@@ -29,9 +30,6 @@
     "eslint-plugin-n": "15.7.0",
     "eslint-plugin-promise": "6.1.1",
     "prettier": "3.0.0",
-    "serverless-dotenv-plugin": "4.0.2",
-    "serverless-offline": "11.6.0",
-    "serverless-plugin-typescript": "2.1.4",
     "typescript": "5.1.6"
   }
 }

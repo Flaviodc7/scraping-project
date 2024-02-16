@@ -1,15 +1,13 @@
-import cargarProductosSalcobrandEnDynamo from './retailers/htmlRetailer.js';
-import cargarProductosCruzVerdeEnDynamo from './retailers/apiRetailer.js';
-import cargarProductosFarmaciasAhumadaEnDynamo from './retailers/htmlRetailer.js';
+import { scrapHTMLProductsFromRetailer } from './retailers/htmlRetailer.js';
+import { scrapApiProductsFromRetailer } from './retailers/apiRetailer.js';
 
 export const handler = async (event: any, _context: any, callback: any) => {
   try {
     await Promise.all([
-      cargarProductosCruzVerdeEnDynamo(),
-      cargarProductosFarmaciasAhumadaEnDynamo(),
-      cargarProductosSalcobrandEnDynamo(),
+      scrapApiProductsFromRetailer(''),
+      scrapHTMLProductsFromRetailer(''),
     ]);
-    callback(null, 'Productos cargados exitosamente');
+    callback(null, 'Products uploaded succesfully');
   } catch (error) {
     callback(error);
   }
