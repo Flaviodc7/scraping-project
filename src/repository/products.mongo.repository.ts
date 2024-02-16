@@ -11,14 +11,14 @@ export class ProductScrapingMongoRepository implements ProductScrapingRepository
           new: true,
           upsert: true,
         });
-        console.log('Producto CRUZ VERDE actualizado/insertado con éxito:', result);
+        console.log(`Product insert/update succesfull: ${result}`);
         if (result !== null) {
           updatedProducts.push(result.toObject() as ProductScrapingEntity);
         }
       }
       return updatedProducts;
     } catch (error) {
-      console.error('Error al actualizar/insertar productos CRUZ VERDE en MongoDB:', error);
+      console.error('Error on insert/updating product:', error);
       throw error;
     }
   };
