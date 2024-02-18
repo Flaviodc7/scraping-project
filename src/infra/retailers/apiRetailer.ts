@@ -190,7 +190,7 @@ export const scrapApiProductsFromRetailer = async (retailer: string) => {
     const allProductSitemaps = await Promise.all(sitePromises);
     allSitesFromSiteMap.push(...allProductSitemaps.flat());
     await processProductUrls(allSitesFromSiteMap, retailer);
-    console.log('TASK COMPLETED SUCCESFULLY');
+    console.log('TASK COMPLETED SUCCESSFULLY');
   }
 
   const finishTime = currentTime();

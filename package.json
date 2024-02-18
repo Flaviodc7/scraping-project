@@ -1,8 +1,8 @@
 {
-  "name": "scrapping-productos",
+  "name": "scrapping-products",
   "version": "1.0.0",
-  "description": "Scrapping de retailers",
-  "main": "index.js",
+  "description": "Scraping all products from sitemap",
+  "main": "./build/handler.js",
   "scripts": {
     "build": "tsc && tsc-alias",
     "start": "node ./build/handler.js",
