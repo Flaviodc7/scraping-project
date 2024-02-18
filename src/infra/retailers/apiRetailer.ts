@@ -117,7 +117,7 @@ const processBatchOfProducts = async (batch: string[], cookie: string, retailer:
           const breadcrumbs =
             productData.category !== undefined ? await getBreadcrumbsData(productData.category, cookie) : '';
 
-          // Edit this part as you need
+          // Edit this part as the retailer needs
           const product = {
             batchs: [
               {
@@ -140,9 +140,9 @@ const processBatchOfProducts = async (batch: string[], cookie: string, retailer:
             presentation: productData.format,
             productBreadcrumbs: breadcrumbs.length ? breadcrumbs.join(' > ') : 'NO BREADCRUMBS',
             quantityPerContainer: 1,
-            recommendations: productData.tabs.find((tab: any) => tab.title === 'Recomnendations')?.content
+            recommendations: productData.tabs.find((tab: any) => tab.title === 'Recommendations')?.content
               ? removeHTMLTags(productData.tabs.find((tab: any) => tab.title === 'Recommendations')?.content)
-              : 'NO RECOMENDATIONS',
+              : 'NO RECOMMENDATIONS',
             requiresPrescription: productData.prescription ? 1 : 0,
             restrictions: '',
             retailer,
@@ -152,7 +152,6 @@ const processBatchOfProducts = async (batch: string[], cookie: string, retailer:
           products.push(product);
         }
       }
-      // }
     )
   );
   return products;

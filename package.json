@@ -1,5 +1,5 @@
 {
-  "name": "scrapping-products",
+  "name": "scraping-products",
   "version": "1.0.0",
   "description": "Scraping all products from sitemap",
   "main": "./build/handler.js",
